@@ -22,7 +22,7 @@ const Login = () => {
     try {
       const res = await API.post("/auth/login", { email, password });
       toast.success("Login successful!");
-      
+      localStorage.setItem("token", res.data.token);
       if (res.data.user) {
         localStorage.setItem("userId", res.data.user.id);
         localStorage.setItem("userName", res.data.user.name);
